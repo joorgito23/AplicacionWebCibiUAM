@@ -48,7 +48,7 @@ class HacerReservaAPITest(TransactionTestCase):
             longitud=0.5, nAnclajes=2)
         self.anc3 = Anclaje.objects.create(estacion=self.est2, numAnclaje=1)
         self.anc4 = Anclaje.objects.create(estacion=self.est2, numAnclaje=2)
-        Pagos.objects.create(order_id="3XR38212DF879261C", pagado=False)
+        Pagos.objects.create(order_id="0AS21963LF182980A", pagado=False)
 
         self.usuario2 = UsuarioSistema(
             username="admin",
@@ -522,11 +522,11 @@ class HacerReservaAPITest(TransactionTestCase):
                                    estOrigen=self.est, estDestino=self.est2, ancOrigen=self.anc, ancDestino=self.anc3, bicicleta=self.bici, usuario=self.user, expires_at=timezone.localtime() + timedelta(minutes=10))
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 1,
                 'saldo': 0
                 }
@@ -555,13 +555,13 @@ class HacerReservaAPITest(TransactionTestCase):
                                    estOrigen=self.est, estDestino=self.est2, ancOrigen=self.anc, ancDestino=self.anc3, bicicleta=self.bici, usuario=self.user, expires_at=timezone.localtime() + timedelta(minutes=10))
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
         self.user.saldo = 5
         self.user.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': r.id,
                 'saldo': -0.1
                 }
@@ -583,7 +583,7 @@ class HacerReservaAPITest(TransactionTestCase):
     def test_016_pagar_reserva(self):
         """Intenta pagar una reserva de forma errónea al no estar autenticado"""
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 1,
                 'saldo': -2
                 }
@@ -599,7 +599,7 @@ class HacerReservaAPITest(TransactionTestCase):
         # Autentica al usuario
         self.client.force_authenticate(user=self.usuario2)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 1,
                 'saldo': -2
                 }
@@ -631,7 +631,7 @@ class HacerReservaAPITest(TransactionTestCase):
                          "No se ha recibido order id.")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'saldo': -2
                 }
 
@@ -643,7 +643,7 @@ class HacerReservaAPITest(TransactionTestCase):
                          "No se ha recibido reserva id.")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 1
                 }
 
@@ -661,7 +661,7 @@ class HacerReservaAPITest(TransactionTestCase):
         # Autentica al usuario
         self.client.force_authenticate(user=self.usuario)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': "error",
                 'saldo': -2
                 }
@@ -674,7 +674,7 @@ class HacerReservaAPITest(TransactionTestCase):
                          "Reserva id con formato erróneo.")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 1,
                 'saldo': "error"
                 }
@@ -693,7 +693,7 @@ class HacerReservaAPITest(TransactionTestCase):
         # Autentica al usuario
         self.client.force_authenticate(user=self.usuario)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': 5,
                 'saldo': -2
                 }
@@ -716,7 +716,7 @@ class HacerReservaAPITest(TransactionTestCase):
         r = Reserva.objects.create(fechaInicio=timezone.localtime()+relativedelta(minutes=15), fechaFin=timezone.localtime()+relativedelta(minutes=25), importe=0.1, estado='pendiente',
                                    estOrigen=self.est, estDestino=self.est2, ancOrigen=self.anc, ancDestino=self.anc3, bicicleta=self.bici, usuario=self.user, expires_at=timezone.localtime() - timedelta(minutes=10))
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'reserva_id': r.id,
                 'saldo': -0.1
                 }

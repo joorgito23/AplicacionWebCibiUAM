@@ -39,7 +39,7 @@ class Intregacion_2_Test(TransactionTestCase):
             usuario=self.usuario, nombre="Luis", apellidos="Perez Perez", saldo=0.0, tlf="111111111")
         self.c = Contrato.objects.create(inicio=timezone.localtime().date()-relativedelta(days=25), fin=timezone.localtime(
         ).date()-relativedelta(days=25)+relativedelta(days=29), usuario=self.user, tarifa=self.mensual)
-        Pagos.objects.create(order_id="3XR38212DF879261C", pagado=False)
+        Pagos.objects.create(order_id="0AS21963LF182980A", pagado=False)
 
     def test_integracion_2(self):
         # Iniciamos sesión
@@ -129,13 +129,13 @@ class Intregacion_2_Test(TransactionTestCase):
         self.assertIn("importe", response.data)
         self.assertEqual(response.data.get("importe"), float(8))
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1,
                 'tarifa': 'anual'
                 }
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 

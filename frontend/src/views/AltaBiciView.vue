@@ -1,4 +1,4 @@
-<!-- src/components/AltaBiciView.vue -->
+<!-- src/views/AltaBiciView.vue -->
 <template>
   <div id="alta-bici-view" style="width: 100%">
     <main>

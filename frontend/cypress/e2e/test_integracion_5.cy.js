@@ -13,7 +13,7 @@ describe("Test Integracion 5", () => {
     // Borramos toda la base de datos inicial
     cy.reset_bd();
 
-    //Poblamos base de datos con datos iniciales necesarios
+    // Poblamos base de datos con datos iniciales necesarios
     cy.populate_integracion5();
 
     // Página inicio
@@ -126,14 +126,14 @@ describe("Test Integracion 5", () => {
     cy.contains("Notificaciones sin leer").should("be.visible");
     cy.contains("Fecha:").should("be.visible");
 
-    // Notificacion 1
+    // Notificación 1
     const fecha1 = new Date(ahora);
     cy.contains(fecha1.toISOString().slice(0, 10)).should("be.visible");
     cy.contains("A continuación se indica un resumen de su reserva.").should(
       "be.visible"
     );
 
-    // Notificacion aviso expiración contrato
+    // Notificación aviso expiración contrato
     const fecha2 = new Date(ahora);
     fecha2.setDate(fecha2.getDate() - 25 + 29 - 10);
     cy.contains(fecha2.toISOString().slice(0, 10)).should("be.visible");

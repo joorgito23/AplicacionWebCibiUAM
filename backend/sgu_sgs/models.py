@@ -774,7 +774,7 @@ class Anclaje(models.Model):
         if últimaReserva.ancOrigen == self:
             return False
 
-        # Si la utlima previa es destino y no hay reservas después que sea origen hay bicicleta
+        # Si la última previa es destino y no hay reservas después que sea origen hay bicicleta
         reservasOrigPost = self.aOrigen.filter(
             fechaInicio__gte=fecha, estado__in=['pagada', 'cancelada'])
         if not reservasOrigPost:

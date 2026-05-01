@@ -14,17 +14,14 @@ def populate():
     # Tarifas del sistema
 
     # Mensual
-    # Esta tarifa permite realizar un número de reservas ilimitadas a coste 0. Durante los 30 días del contrato podrá hacer un uso intensivo del servicio sin ningun coste adicional por reserva. No dejes escapar esta tarifa y descubre los beneficios de CibiUAM.
     mensual = Tarifa.objects.create(
         importe=10, precioMinuto=0, descripcion="Disfruta de la máxima tranquilidad con una cuota fija al mes. Con esta tarifa puedes reservar una bicicleta siempre que quieras sin pagar un importe extra por cada uso. Ideal si utilizas el servicio con frecuencia y quieres olvidarte de costes adicionales para cada reserva realizada.", duracion="mensual")
 
     # Semestral
-    # Esta tarifa permite acceder al servicio con un coste menor que la tarifa mensual. Además, podrás realizar reservas con un precio por minuto muy asequible para desplazarte por el campus de la UAM.
     semestral = Tarifa.objects.create(
         importe=5, precioMinuto=0.01, descripcion="Ahorra con una cuota fija más baja y paga únicamente por el tiempo que realmente utilices. Es la opción perfecta si utilizas la bicicleta de manera ocasional, ya que te permite disfrutar de una suscripción más económica y flexible a medio plazo, adaptándose a tus necesidades sin comprometer tu libertad de uso.", duracion="semestral")
 
     # Anual
-    # Esta tarifa permite hacer uso del servicio durante un año completo sin necesidad de preocuparte por la expiración de tu contrato. Además, está pensada para usuarios que no hacen un uso exhaustivo del servicio ofreciendo un precio asequible por minuto para realizar desplazamientos en bicicleta cuando lo desee.
     anual = Tarifa.objects.create(importe=8, precioMinuto=0.01,
                                   descripcion="Esta es la tarifa más económica para usuarios habituales a largo plazo. Cuenta con una cuota fija baja y un pequeño coste por minuto en cada reserva, permitiéndote disfrutar del servicio todo el año con el mejor equilibrio entre ahorro y flexibilidad.", duracion="anual")
 
@@ -264,8 +261,6 @@ def populate():
     r1 = Reserva.objects.create(fechaInicio=timezone.localtime()+relativedelta(days=3, minutes=230), fechaFin=timezone.localtime()+relativedelta(days=3, minutes=240), importe=anual.calcularPrecioReservaTarifa(timezone.localtime()+relativedelta(days=3, minutes=230), timezone.localtime()+relativedelta(days=3, minutes=240)), estado='pagada',
                                 estOrigen=e, estDestino=e2, ancOrigen=e.getAnclajeByNumAnclaje(5), ancDestino=e2.getAnclajeByNumAnclaje(1), bicicleta=Bicicleta.objects.filter(anclajeInicio=e2.getAnclajeByNumAnclaje(1)).first(), usuario=usuario, expires_at=timezone.localtime() + timedelta(minutes=10))
     r1.notificarReserva()
-
-    # Debe hacer reserva de eps a renfe hoy en 5 h con usuario sgs_1970
 
     # Más reservas de otros usuarios entre e5 y e6
     r1 = Reserva.objects.create(fechaInicio=timezone.localtime()+relativedelta(days=10, minutes=10), fechaFin=timezone.localtime()+relativedelta(days=10, minutes=20), importe=semestral.calcularPrecioReservaTarifa(timezone.localtime()+relativedelta(days=10, minutes=10), timezone.localtime()+relativedelta(days=10, minutes=20)), estado='pagada',

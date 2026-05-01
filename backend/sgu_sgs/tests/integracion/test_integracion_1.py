@@ -40,7 +40,7 @@ class Intregacion_1_Test(TransactionTestCase):
         self.anc3 = Anclaje.objects.create(estacion=self.e1, numAnclaje=3)
         self.bici = Bicicleta.objects.create(
             estacionInicial=self.e1, anclajeInicio=self.anc)
-        Pagos.objects.create(order_id="3XR38212DF879261C", pagado=False)
+        Pagos.objects.create(order_id="0AS21963LF182980A", pagado=False)
 
     def test_integracion_1(self):
         # Obtenemos listado de tarifas
@@ -166,11 +166,11 @@ class Intregacion_1_Test(TransactionTestCase):
 
         # Procede a pagar
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1
                 }
         # Procede a la captura del pago correctamente tras su aprobación

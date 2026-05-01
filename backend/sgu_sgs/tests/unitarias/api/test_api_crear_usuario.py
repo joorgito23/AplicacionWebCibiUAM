@@ -24,7 +24,7 @@ class CrearUsuarioAPITest(TransactionTestCase):
             importe=5, precioMinuto=coste, descripcion="Esta tarifa permite realizar reservas con un coste bajo.", duracion="semestral")
         self.anual = Tarifa.objects.create(
             importe=8, precioMinuto=coste, descripcion="Esta tarifa permite hacer un renovacion al año y olvidarte", duracion="anual")
-        Pagos.objects.create(order_id="3XR38212DF879261C", pagado=False)
+        Pagos.objects.create(order_id="0AS21963LF182980A", pagado=False)
 
     def test_000_crear_usuario(self):
         """Crea un nuevo usuario pendiente de pago correctamente """
@@ -159,11 +159,11 @@ class CrearUsuarioAPITest(TransactionTestCase):
                                         contraseña="contrapago", tlf="111111111", tarifa=self.anual, expires_at=timezone.localtime() + timedelta(minutes=10))
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1
                 }
         # Procede a la captura del pago correctamente tras su aprobación
@@ -194,12 +194,12 @@ class CrearUsuarioAPITest(TransactionTestCase):
                          "No se ha recibido order id.")
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
         data = {'error': "rr",
-                'order_id': "3XR38212DF879261C"
+                'order_id': "0AS21963LF182980A"
                 }
         # Procede a capturar el pago de forma errónea sin indicar user id
         response = self.client.post(PAGO, data)
@@ -213,10 +213,10 @@ class CrearUsuarioAPITest(TransactionTestCase):
         """Pago erróneo al pasar un user id erróneo"""
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 145
                 }
         # Procede a capturar el pago de forma errónea al indicar user id erróneo

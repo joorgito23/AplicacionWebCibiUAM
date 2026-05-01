@@ -102,7 +102,7 @@ class PayPal:
             "Content-Type": "application/json"
         }
 
-        # Post a la API de PayPal para capturar la orden de pago y obtener estado del pago
+        # Post a la API de PayPal para capturar la orden de pago y obtener el estado del pago
         response = requests.post(url, headers=headers)
         if response.status_code != status.HTTP_200_OK and response.status_code != status.HTTP_201_CREATED:
             return Response({"Error": "Ocurrió un error al procesar el pago"}, status=status.HTTP_400_BAD_REQUEST)

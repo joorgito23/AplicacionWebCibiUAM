@@ -1,3 +1,4 @@
+<!-- src/views/FAQView.vue -->
 <template>
   <div id="faq">
     <main>

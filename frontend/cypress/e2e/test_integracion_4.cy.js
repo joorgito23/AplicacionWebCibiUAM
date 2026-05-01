@@ -10,7 +10,7 @@ describe("Test Integracion 4", () => {
     // Borramos toda la base de datos inicial
     cy.reset_bd();
 
-    //Poblamos base de datos con datos iniciales necesarios
+    // Poblamos base de datos con datos iniciales necesarios
     cy.populate_integracion4();
 
     // Página inicio

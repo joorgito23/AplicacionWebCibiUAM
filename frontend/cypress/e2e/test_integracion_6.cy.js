@@ -1,6 +1,6 @@
 // cypress/e2e/test_integracion_6.cy.js
 describe("Test Integracion 6", () => {
-  // Realiza las acciones de un usuario que desea realizar una reserva:
+  // Realiza las acciones de un usuario que desea cancelar una reserva:
   // - Realiza login
   // - Realiza una reserva que finalmente no puede realizar
   // - Consulta sus reservas para cancelarla
@@ -13,7 +13,7 @@ describe("Test Integracion 6", () => {
     // Borramos toda la base de datos inicial
     cy.reset_bd();
 
-    //Poblamos base de datos con datos iniciales necesarios
+    // Poblamos base de datos con datos iniciales necesarios
     cy.populate_integracion6();
 
     // Página inicio

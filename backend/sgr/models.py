@@ -148,7 +148,6 @@ class Reserva(models.Model):
     def devolverImporte(self):
         """
             Reembolsa al usuario el importe de la reserva.
-
         """
 
         # Reembolso de importe
@@ -156,7 +155,7 @@ class Reserva(models.Model):
 
     def cancelar(self):
         """
-            Cancela una reservar realizada anteriormente.
+            Cancela una reserva realizada anteriormente.
         """
 
         # Actualiza estado de la reserva

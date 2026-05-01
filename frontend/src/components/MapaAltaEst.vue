@@ -44,10 +44,10 @@ const mapa = async () => {
     .addTo(map.value)
     .bindPopup(
       `
-            <div>
-                <img src="/sede.png" alt="Sede" style="width:24px; height:24px;">
-                <b>Sede CibiUAM</b>
-            </div>
+        <div>
+            <img src="/sede.png" alt="Sede" style="width:24px; height:24px;">
+            <b>Sede CibiUAM</b>
+        </div>
         `
     )
     .openPopup();

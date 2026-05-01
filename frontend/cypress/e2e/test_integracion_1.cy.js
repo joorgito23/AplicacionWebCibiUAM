@@ -10,7 +10,7 @@ describe("Test Integracion 1", () => {
     // Borramos toda la base de datos inicial
     cy.reset_bd();
 
-    //Poblamos la base de datos con los datos iniciales necesarios
+    // Poblamos la base de datos con los datos iniciales necesarios
     cy.populate_inicial_cypress();
 
     // Página de inicio

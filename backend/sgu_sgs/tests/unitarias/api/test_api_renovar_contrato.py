@@ -40,7 +40,7 @@ class RenovacionAPITest(TransactionTestCase):
         self.usuario2.save()
         self.admin = Administrador.objects.create(
             usuario=self.usuario2)
-        Pagos.objects.create(order_id="3XR38212DF879261C", pagado=False)
+        Pagos.objects.create(order_id="0AS21963LF182980A", pagado=False)
 
     def test_000_renovar_contrato(self):
         """Renueva el contrato correctamente """
@@ -59,7 +59,7 @@ class RenovacionAPITest(TransactionTestCase):
         self.assertIn("user_id", response.data)
         self.assertIn("importe", response.data)
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1,
                 'tarifa': 'mensual'
                 }
@@ -142,11 +142,11 @@ class RenovacionAPITest(TransactionTestCase):
         self.client.force_authenticate(user=self.usuario)
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1
                 }
 
@@ -172,11 +172,11 @@ class RenovacionAPITest(TransactionTestCase):
                          "No se ha recibido order id.")
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'tarifa': 'mensual'
                 }
 
@@ -195,11 +195,11 @@ class RenovacionAPITest(TransactionTestCase):
         self.client.force_authenticate(user=self.usuario)
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1,
                 'tarifa': 'error'
                 }
@@ -219,11 +219,11 @@ class RenovacionAPITest(TransactionTestCase):
         self.client.force_authenticate(user=self.usuario)
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 15,
                 'tarifa': 'mensual'
                 }
@@ -257,11 +257,11 @@ class RenovacionAPITest(TransactionTestCase):
         """Error en el pago de la renovación al no estar autenticado """
 
         # Simulamos que no se ha pagado todavía
-        estado = Pagos.objects.filter(order_id="3XR38212DF879261C").first()
+        estado = Pagos.objects.filter(order_id="0AS21963LF182980A").first()
         estado.pagado = False
         estado.save()
 
-        data = {'order_id': "3XR38212DF879261C",
+        data = {'order_id': "0AS21963LF182980A",
                 'user_id': 1,
                 'tarifa': 'mensual'
                 }

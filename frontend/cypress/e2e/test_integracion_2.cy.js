@@ -14,7 +14,7 @@ describe("Test Integracion 2", () => {
     // Borramos toda la base de datos inicial
     cy.reset_bd();
 
-    //Poblamos base de datos con datos iniciales necesarios
+    // Poblamos base de datos con datos iniciales necesarios
     cy.populate_integracion2();
 
     // Página inicio
@@ -79,7 +79,7 @@ describe("Test Integracion 2", () => {
     cy.get("[data-cy='/consultar_perfil']").click();
     cy.url().should("include", "/consultar_perfil");
 
-    // Comprobamos que muestra la informacion correcta
+    // Comprobamos que muestra la información correcta
     cy.get("[data-cy=titulo-perfil]").should("exist");
     cy.contains("Nombre de Usuario: usuario").should("be.visible");
     cy.contains("Nombre y Apellidos: Luis Perez Perez").should("be.visible");

@@ -128,7 +128,7 @@ describe("Test Integracion 3", () => {
       .should("exist");
     cy.get("[data-cy=select-est]").contains("option", "Renfe").should("exist");
 
-    // Seleccionamos estacion renfe
+    // Seleccionamos estación renfe
     cy.get("[data-cy=select-est]").select("Renfe");
 
     // Comprobamos que nos permite seleccionar los anclajes existentes

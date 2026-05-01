@@ -100,7 +100,7 @@ const filtros = ref({
 
 const emit = defineEmits(["filtrar-reservas"]);
 
-//Función para enviar los filtros deseados por el usuario a la vista correspondiente
+// Función para enviar los filtros deseados por el usuario a la vista correspondiente
 const filtrarReservas = async () => {
   emit("filtrar-reservas", filtros.value);
 };

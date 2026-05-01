@@ -156,7 +156,7 @@ const getReservas = async () => {
     }
 
     const data = await response.json();
-    // Guarda las reservas para mostrar al usuario mediante tarjetas
+    // Guarda las reservas para mostrarlas al usuario mediante tarjetas
     reservas.value = data;
   } catch (error) {
     console.error(error);
