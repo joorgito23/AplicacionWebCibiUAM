@@ -293,7 +293,7 @@ const formatFecha = (f) => {
 }
 
 .etiqueta-estado.finalizado {
-  background: #f3f4f6;
+  background: #fee2e2;
   color: #991b1b;
 }
 
