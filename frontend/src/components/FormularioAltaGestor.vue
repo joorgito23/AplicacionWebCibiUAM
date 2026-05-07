@@ -1,4 +1,4 @@
-<!-- src/componets/FormularioAltaGestor.vue -->
+<!-- src/components/FormularioAltaGestor.vue -->
 <template>
   <div id="formulario-alta-gestor">
     <form @submit.prevent="altaGestor">

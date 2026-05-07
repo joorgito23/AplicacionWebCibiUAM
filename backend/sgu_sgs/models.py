@@ -260,7 +260,7 @@ class Usuario(models.Model):
         # Obtiene contrato actual
         c = self.getContratoActual()
 
-        # Si hay contrato, y caduca en menos de 10 días y no se ha creado antes, crea la notificación
+        # Si hay contrato, caduca en menos de 10 días y no se ha creado antes, crea la notificación
         if c is not None:
             if c.getFin() <= timezone.localtime().date() + relativedelta(days=10):
                 n = Notificacion.objects.filter(fecha=c.getFin() - relativedelta(days=10), usuario=self,
@@ -686,7 +686,7 @@ class Anclaje(models.Model):
         if últimaReserva.ancDestino == self:
             return False
 
-        # Si la utlima previa es origen y no hay reservas después que sea destino está libre
+        # Si la última previa es origen y no hay reservas después que sea destino está libre
         reservasDestPost = self.aDestino.filter(
             fechaFin__gte=fecha, estado__in=['pagada', 'cancelada'])
         if not reservasDestPost:

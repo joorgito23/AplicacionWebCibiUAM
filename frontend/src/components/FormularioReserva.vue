@@ -1,4 +1,4 @@
-<!-- src/componets/FormularioReserva.vue -->
+<!-- src/components/FormularioReserva.vue -->
 <template>
   <div id="formulario-reserva">
     <form @submit.prevent="hacerReserva">

@@ -143,6 +143,7 @@ class HacerReservaAPITest(TransactionTestCase):
 
     def test_003_hacer_reserva(self):
         """Realiza una nueva reserva de forma errónea al no ser usuario"""
+        
         # Autentica al usuario
         self.client.force_authenticate(user=self.usuario2)
 

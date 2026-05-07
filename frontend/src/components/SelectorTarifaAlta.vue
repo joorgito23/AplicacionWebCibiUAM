@@ -1,4 +1,4 @@
-<!-- src/componets/SelectorTarifaAlta.vue -->
+<!-- src/components/SelectorTarifaAlta.vue -->
 <template>
   <div id="selector-tarifa-alta" class="d-flex flex-column">
     <label for="tarifa" :class="labelClass"><span class="text-danger">*</span> Seleccione una tarifa:</label>

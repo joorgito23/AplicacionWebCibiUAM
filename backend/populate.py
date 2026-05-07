@@ -227,7 +227,7 @@ def populate():
     r4.notificarReserva()
     r4.actualizarEstado('cancelada')
 
-    # Pruebas reservas de sgs_1970
+    # Reservas de sgs_1970
     r2 = Reserva.objects.create(fechaInicio=timezone.localtime()+relativedelta(minutes=5), fechaFin=timezone.localtime()+relativedelta(minutes=10), importe=anual.calcularPrecioReservaTarifa(timezone.localtime()+relativedelta(minutes=5), timezone.localtime()+relativedelta(minutes=10)), estado='pagada',
                                 estOrigen=e2, estDestino=e, ancOrigen=Anclaje.objects.filter(
         estacion=e2, numAnclaje=2).first(), ancDestino=Anclaje.objects.filter(

@@ -1,4 +1,4 @@
-<!-- src/componets/MapaCampusReserva.vue -->
+<!-- src/components/MapaCampusReserva.vue -->
 <template>
   <div id="mapa-reserva">
     <div class="map-container">
