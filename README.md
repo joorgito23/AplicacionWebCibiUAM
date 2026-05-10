@@ -18,6 +18,7 @@ Aplicación web desarrollada con Django, PostgreSQL y frontend basado en Node.js
   - [Backend](#backend)
   - [Frontend](#frontend-1)
 - [Comandos útiles](#comandos-útiles)
+- [Métodos de pago](#métodos-de-pago)
 
 ---
 
@@ -359,7 +360,6 @@ Ejecutar app:
 npm run dev
 ```
 
-
 ---
 
 ### PostgreSQL
@@ -378,12 +378,73 @@ dropdb -U alumnodb -h localhost cibiuam
 
 ---
 
+## Métodos de pago
+
+La aplicación integra pagos mediante PayPal.
+
+Se soportan dos métodos de pago:
+
+- Pago mediante una cuenta de PayPal
+- Pago mediante tarjeta bancaria a través de PayPal
+
+---
+
+### Pago con una cuenta de PayPal
+
+Para realizar pagos utilizando una cuenta de PayPal, utilice la siguiente configuración:
+
+**Cuenta PayPal:**
+
+- Correo electrónico: sb-qmghw47958772@personal.example.com
+- Contraseña: Xg;%-Tb3
+- Teléfono móvil: 625580327
+
+---
+
+### Pago con tarjeta bancaria
+
+PayPal permite realizar pagos con tarjeta.
+
+#### Tarjeta 1
+
+- Tipo: Mastercard
+- Número: 5232105769361565
+- Fecha de expiración: 04/2031
+- CVC: 012
+
+#### Tarjeta 2
+
+- Tipo: Visa
+- Número: 4020025763299562
+- Fecha de expiración: 01/2031
+- CVC: 123
+
+---
+
+## Configuración de PayPal en desarrollo
+
+Para configurar PayPal en entorno de desarrollo:
+
+Indicar en el archivo `settings.py` la siguiente información:
+
+```bash
+PAYPAL_CLIENT_ID=TU_CLIENT_ID
+PAYPAL_SECRET=TU_CLIENT_SECRET
+PAYPAL_MAIL=TU_MAIL
+PAYPAL_BASE="https://api-m.sandbox.paypal.com"
+```
+
+Las credenciales sandbox se pueden configurar desde el panel de PayPal Developer.
+
+---
+
 ## Stack tecnológico
 
 - Backend: Django
 - Base de datos: PostgreSQL
 - Frontend: Node.js + npm
 - Lenguaje: Python 3.11
+- Pasarela de pago: PayPal
 
 ---
 
@@ -393,3 +454,4 @@ dropdb -U alumnodb -h localhost cibiuam
 - Ejecuta los comandos de frontend desde la carpeta `frontend`.
 - Mantén el entorno virtual activado durante el desarrollo.
 - Asegúrate de tener PostgreSQL en ejecución antes de iniciar el backend.
+- Configura correctamente las credenciales de PayPal antes de probar los pagos.
